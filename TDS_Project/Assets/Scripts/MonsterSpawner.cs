@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-
     public Transform[] spawnPoint;
 
     float spawnTime;
