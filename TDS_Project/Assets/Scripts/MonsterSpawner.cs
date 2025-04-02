@@ -14,6 +14,10 @@ public class MonsterSpawner : MonoBehaviour
     private void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>();
+
+        Physics.IgnoreLayerCollision(layer[0], layer[1], false);
+        Physics.IgnoreLayerCollision(layer[0], layer[2], false);
+        Physics.IgnoreLayerCollision(layer[1], layer[2], false);
     }
 
     private void Update()
