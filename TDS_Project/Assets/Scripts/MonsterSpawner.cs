@@ -1,37 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    public GameObject monsterPrefab;
-    public float interval = 2.0f;
 
-    private float[] spawnPositionsY = new float[] {
-        1f,
-        0.5f,
-        0.0f
-    };
+    public Transform[] spawnPoint;
 
-    IEnumerator Start()
+    float spawnTime;
+
+    private void Awake()
     {
-        while (true)
+        spawnPoint = GetComponentsInChildren<Transform>();
+    }
+
+    private void Update()
+    {
+        spawnTime += Time.deltaTime;
+        if (spawnTime > 2f)
         {
-            yield return new WaitForSeconds(interval);
-
-            int monsterCount = Random.Range(1, 3);
-            float spawnY = spawnPositionsY[Random.Range(0, spawnPositionsY.Length)];
-
-            for(int i = 0; i < monsterCount; i++)
-            {
-                Vector3 spawnPosition = new Vector3(
-                                        transform.position.x, 
-                                        transform.position.y + spawnY,
-                                        transform.position.z);
-
-                Instantiate(monsterPrefab, spawnPosition, transform.rotation);
-            }
+            spawnTime = 0;
+            Spawn();
         }
+    }
+
+    private void Spawn()
+    {
+        GameObject monster = GameManager.instance.pool.Get(0);
+        monster.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
     }
 }
 
