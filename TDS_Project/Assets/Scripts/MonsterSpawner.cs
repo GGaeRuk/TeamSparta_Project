@@ -9,6 +9,8 @@ public class MonsterSpawner : MonoBehaviour
 
     float spawnTime;
 
+    private int[] layer = new int[3] { 7, 8, 9 };
+
     private void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>();
@@ -27,7 +29,10 @@ public class MonsterSpawner : MonoBehaviour
     private void Spawn()
     {
         GameObject monster = GameManager.instance.pool.Get(0);
-        monster.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+        int pick = Random.Range(1, spawnPoint.Length);
+
+        monster.layer = layer[pick - 1];
+        monster.transform.position = spawnPoint[pick].position;
     }
 }
 
