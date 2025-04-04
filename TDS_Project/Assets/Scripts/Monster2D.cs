@@ -5,12 +5,11 @@ using UnityEngine;
 public class Monster2D : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
-    public float speed = 5.0f;
+    public float speed = 2.0f;
 
-    private void Start()
+    private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
     }
 
     private void FixedUpdate()
@@ -20,12 +19,6 @@ public class Monster2D : MonoBehaviour
 
     private void Move_2D()
     {
-        Vector2 pos = rigidbody.transform.position;
-        pos = new Vector2(
-            pos.x + (-1 * speed * Time.deltaTime),
-            pos.y
-            );
-        rigidbody.MovePosition(pos);
+        rigidbody.velocity = new Vector2(-speed, rigidbody.velocity.y);
     }
-
 }

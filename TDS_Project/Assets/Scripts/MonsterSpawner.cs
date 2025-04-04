@@ -14,10 +14,6 @@ public class MonsterSpawner : MonoBehaviour
     private void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>();
-
-        Physics.IgnoreLayerCollision(layer[0], layer[1], false);
-        Physics.IgnoreLayerCollision(layer[0], layer[2], false);
-        Physics.IgnoreLayerCollision(layer[1], layer[2], false);
     }
 
     private void Update()
@@ -37,6 +33,8 @@ public class MonsterSpawner : MonoBehaviour
 
         monster.layer = layer[pick - 1];
         monster.transform.position = spawnPoint[pick].position;
+
+        // Edit -> ProjcetSettings -> Physics2D 설정으로 충돌처리 해결
     }
 }
 
