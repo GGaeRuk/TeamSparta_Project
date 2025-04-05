@@ -1287,7 +1287,7 @@ GameObject:
   - component: {fileID: 1349272030}
   - component: {fileID: 1349272031}
   m_Layer: 0
-  m_Name: PoolManager
+  m_Name: MonsterPoolManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

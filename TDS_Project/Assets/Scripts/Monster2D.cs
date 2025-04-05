@@ -7,7 +7,7 @@ public class Monster2D : MonoBehaviour
     private Rigidbody2D rigidbody;
     private Animator animator;
     public float speed = 2.0f;
-    public float attackInterval = 5.0f;
+    public float attackInterval = 1.0f;
     private bool isAttack = false;
 
     private void Awake()

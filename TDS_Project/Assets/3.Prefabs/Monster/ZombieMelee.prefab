@@ -70,7 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  attackInterval: 5
+  attackInterval: 1
+  targetMonster: {fileID: 1174570720321624928}
+  followHeight: 1.5
 --- !u!50 &5201712052906974046
 Rigidbody2D:
   serializedVersion: 4
